@@ -1,28 +1,28 @@
 katz_deli = []
 
-def take_a_number(katz_deli, name)
-  katz_deli = katz_deli.push(name)
-  katz_deli.each_with_index.map do |name, index|
-  puts "Welcome, #{name}. You are number #{index+1} in line."
+def take_a_number(deli, name)
+  deli << name
+  puts "Welcome, #{name}. You are number #{deli.size} in line."  
+end
+
+def now_serving(deli)
+  if deli.empty? 
+    puts "There is nobody to be served!"
+  else 
+    puts "Currently serving: #{deli.first}"
+    deli.shift
   end 
 end
 
-def now_serving(katz_deli)
-  if katz_deli.size > 0 
-    first_in_line = katz_deli.shift
-    puts "Currently serving #{first_in_line}."
-  else 
-    puts "There is nobody waiting to be served!"
-  end 
-end
-
-def line(line)
-  if line.size > 0
-    line.each_with_index.map do |index, name|
-    puts "The line is currently: #{index}#{name}"
-   end
-  else 
+def line(deli)
+  if deli.empty?
     puts "The line is currently empty."
+  else
+    current_line = "The line is currently: "
+      deli.each.with_index(1) do |name, i|
+      current_line << "#{i}. #{name} "
+      end
+    puts current_line 
   end 
 end
 
